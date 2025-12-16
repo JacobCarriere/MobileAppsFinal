@@ -4,11 +4,14 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.*
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.finalproject.R
 import com.example.finalproject.data.snacks.SnackEntity
 import com.example.finalproject.viewmodel.AppViewModel
 import java.util.Locale
@@ -18,21 +21,16 @@ fun SnacksScreen(
     navController: NavController,
     appViewModel: AppViewModel
 ) {
-    // Populate snacks ONCE safely
-    LaunchedEffect(Unit) {
-        appViewModel.ensureSnacksExist()
-    }
-
-    val snacks by appViewModel.snacks.collectAsState()
+    // Observe snacks reactively
+    val snacks = appViewModel.snacks.collectAsState().value
 
     Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
     ) {
-
         Text(
-            text = "Snacks",
+            text = stringResource(R.string.snacks_title),
             style = MaterialTheme.typography.headlineMedium
         )
 
@@ -54,7 +52,7 @@ fun SnacksScreen(
         Spacer(modifier = Modifier.height(16.dp))
 
         Text(
-            text = "Total: $${String.format(Locale.US, "%.2f", appViewModel.snacksTotal())}",
+            text = stringResource(R.string.snacks_total, appViewModel.snacksTotal()),
             style = MaterialTheme.typography.titleMedium
         )
 
@@ -65,7 +63,7 @@ fun SnacksScreen(
             modifier = Modifier.fillMaxWidth(),
             enabled = appViewModel.snacksInCart().isNotEmpty()
         ) {
-            Text("Continue to Checkout")
+            Text(text = stringResource(R.string.continue_to_checkout))
         }
     }
 }
@@ -83,30 +81,20 @@ private fun SnackItem(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-
         Column(
             modifier = Modifier.weight(1f)
         ) {
             Text(snack.name, style = MaterialTheme.typography.bodyLarge)
             Text(snack.description, style = MaterialTheme.typography.bodyMedium)
-            Text(
-                "$${String.format(Locale.US, "%.2f", snack.price)}",
-                style = MaterialTheme.typography.bodySmall
-            )
+            Text("$${snack.price}", style = MaterialTheme.typography.bodySmall)
         }
 
-        Row(verticalAlignment = Alignment.CenterVertically) {
-            IconButton(onClick = onRemove) {
-                Text("−", style = MaterialTheme.typography.headlineSmall)
-            }
-            Text(
-                snack.amountInCart.toString(),
-                modifier = Modifier.padding(horizontal = 8.dp),
-                style = MaterialTheme.typography.bodyLarge
-            )
-            IconButton(onClick = onAdd) {
-                Text("+", style = MaterialTheme.typography.headlineSmall)
-            }
+        Row(
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            IconButton(onClick = onRemove) { Text("−", style = MaterialTheme.typography.headlineSmall) }
+            Text(snack.amountInCart.toString(), modifier = Modifier.padding(horizontal = 8.dp), style = MaterialTheme.typography.bodyLarge)
+            IconButton(onClick = onAdd) { Text("+", style = MaterialTheme.typography.headlineSmall) }
         }
     }
 }

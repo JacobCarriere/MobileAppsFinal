@@ -50,6 +50,17 @@ class AppViewModel(
     fun snacksTotal(): Double =
         snacksInCart().sumOf { it.price * it.amountInCart }
 
+    fun clearCart() = viewModelScope.launch {
+        snacks.value
+            .filter { it.amountInCart > 0 }
+            .forEach { snack ->
+                snackRepository.update(
+                    snack.copy(amountInCart = 0)
+                )
+            }
+    }
+
+
     /**
      * Ensures default snacks exist exactly once.
      * Safe to call multiple times.
