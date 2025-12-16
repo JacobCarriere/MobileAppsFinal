@@ -1,0 +1,76 @@
+<resources>
+    <!-- App Name -->
+    <string name="app_name">Movie Night</string>
+
+    <!-- Top Bar -->
+    <string name="home">Home</string>
+    <string name="checkout">Checkout</string>
+    <string name="back">Back</string>
+
+    <!-- FAB / Contact -->
+    <string name="email_address">example@email.com</string>
+    <string name="send_email">Send Email</string>
+
+    <!-- Screens -->
+    <string name="screen_home">Home</string>
+    <string name="screen_movies">Movies</string>
+    <string name="screen_movie_detail">Movie Details</string>
+    <string name="screen_snacks">Snacks</string>
+    <string name="screen_locations">Locations</string>
+    <string name="screen_checkout">Checkout</string>
+    <string name="screen_thank_you">Thank You!</string>
+
+    <!-- Buttons -->
+    <string name="btn_movies">Movies</string>
+    <string name="btn_snacks">Snacks</string>
+    <string name="btn_locations">Locations</string>
+    <string name="btn_checkout">Checkout</string>
+    <string name="btn_select_movie">Select Movie</string>
+    <string name="btn_confirm_movie">Confirm Movie</string>
+    <string name="btn_confirm_purchase">Confirm Purchase</string>
+    <string name="btn_back_home">Back to Home</string>
+    <string name="btn_add">Add</string>
+    <string name="btn_remove">Remove</string>
+
+    <!-- Placeholders -->
+    <string name="placeholder_movie_list">Movie list will go here.</string>
+    <string name="placeholder_movie_detail">Poster, title, and date picker will go here.</string>
+    <string name="placeholder_snacks">Snacks from Room database will appear here.</string>
+    <string name="placeholder_locations">Google Map showing nearby theaters will go here.</string>
+    <string name="placeholder_checkout">Selected movie, date, snacks, and total will appear here.</string>
+
+    <!-- Movie -->
+    <string name="select_date">Select Date</string>
+    <string name="movie_date_saved">Movie and date saved!</string>
+    <string name="select_date_warning">Please select a date</string>
+    <string name="no_movie_selected">No movie selected.</string>
+
+    <!-- Snacks -->
+    <string name="snacks_title">Snacks</string>
+    <string name="snacks_total">Total: $%1$.2f</string>
+    <string name="continue_to_checkout">Continue to Checkout</string>
+
+    <!-- Checkout -->
+    <string name="checkout_title">Checkout</string>
+    <string name="checkout_movie">Movie: %1$s (%2$s)</string>
+    <string name="checkout_date">Date: %1$s</string>
+    <string name="checkout_snacks">Snacks:</string>
+    <string name="checkout_total">Total: $%1$.2f</string>
+
+    <!-- Thank You -->
+    <string name="thank_you_message">Thank you for your purchase!</string>
+    <string name="back_to_home">Back to Home</string>
+
+    <!-- Toasts / Warnings -->
+    <string name="snack_added">Snack added!</string>
+    <string name="snack_removed">Snack removed!</string>
+
+    <!-- Locations Screen -->
+    <string name="screen_locations_title">Nearby Theaters</string>
+    <string name="cinema_1_title">Cinema 1</string>
+    <string name="cinema_1_snippet">123 Main St</string>
+    <string name="cinema_2_title">Cinema 2</string>
+    <string name="cinema_2_snippet">456 Queen St</string>
+
+
+</resources>
